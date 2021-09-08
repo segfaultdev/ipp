@@ -32,11 +32,11 @@ void parse_line(const char *line_buffer, int line_length) {
     for (int j = 0; j < def_cnt; j++) {
       if (i > line_length - strlen(def_buf[j].name)) continue;
       
-      if (i < line_length - strlen(def_buf[j].name) && def_buf[j].name[strlen(def_buf[j].name) - 1] != ' ') {
+      if (i < line_length - strlen(def_buf[j].name) && !isalnum(def_buf[j].name[strlen(def_buf[j].name) - 1])) {
         if (isalnum(line_buffer[i + strlen(def_buf[j].name)])) continue;
       }
       
-      if (i > 0 && def_buf[j].name[0] != ' ') {
+      if (i > 0 && !isalnum(def_buf[j].name[0])) {
         if (isalnum(line_buffer[i - 1])) continue;
       }
       
